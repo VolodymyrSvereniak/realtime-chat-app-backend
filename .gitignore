@@ -11,3 +11,5 @@ coverage
 # IDE
 .vscode/
 .idea/
+
+/src/generated/prisma
