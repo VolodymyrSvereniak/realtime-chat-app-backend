@@ -1,20 +1,17 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
+import authRoutes from "./routes/auth.route";
+import messageRoutes from "./routes/message.route";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get("/api/auth/signup", (req, res) => {
-  res.send("signup endpoint!");
-});
+app.use("/api/auth", authRoutes);
+app.use("/api/message", messageRoutes);
 
-app.get("/api/auth/login", (req, res) => {
-  res.send("login endpoint!");
-});
-
-app.get("/api/auth/logout", (req, res) => {
-  res.send("logout endpoint!");
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+  res.status(500).json({ message: err.message });
 });
 
 app.listen(PORT, () => {
