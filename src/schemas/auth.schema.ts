@@ -11,5 +11,3 @@ export const signUpSchema = z.object({
     .min(1, "Missing password field")
     .min(6, "Password must be at least 6 characters long"),
 });
-
-export type SignUpData = z.infer<typeof signUpSchema>;
