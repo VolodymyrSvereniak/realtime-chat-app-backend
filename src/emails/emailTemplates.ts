@@ -1,7 +1,13 @@
+interface WelcomeEmailTemplateParams {
+  name: string;
+  clientURL: string;
+}
+
 export const createWelcomeEmailTemplate = (
-  name: string,
-  clientURL: string
+  params: WelcomeEmailTemplateParams
 ): string => {
+  const { name, clientURL } = params;
+
   return `
   <!DOCTYPE html>
   <html lang="en">

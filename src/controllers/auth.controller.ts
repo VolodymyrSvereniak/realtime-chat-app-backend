@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { registerUser } from "../services/auth.service";
 import { generateToken } from "../utils/generateToken";
-import type { SignUpResponse } from "../types/auth.types";
 import { env } from "../lib/env";
+import type { SignUpResponse } from "../types/auth.types";
 
 export const signUp = async (req: Request, res: Response): Promise<void> => {
   const result: SignUpResponse = await registerUser(req.body);

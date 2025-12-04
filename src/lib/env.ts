@@ -1,7 +1,10 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  PORT: z.number().default(3000),
+  PORT: z.coerce.number().default(3000),
+  CLIENT_URL: z.url({
+    error: "CLIENT_URL must be a valid URL",
+  }),
   DATABASE_URL: z.url({
     error: "DATABASE_URL must be a valid URL",
   }),
