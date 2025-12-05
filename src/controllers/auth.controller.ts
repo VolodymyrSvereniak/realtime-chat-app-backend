@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import { registerUser, loginUser } from "../services/auth.service";
 import { generateToken } from "../utils/generateToken";
 import { setCookie } from "../utils/cookies";
-import { env } from "../lib/env";
 import type { SignUpResponse } from "../types/auth.types";
-import { profile } from "console";
 
 export const signUp = async (req: Request, res: Response): Promise<void> => {
   const user: SignUpResponse = await registerUser(req.body);

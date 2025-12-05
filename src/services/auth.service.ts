@@ -1,7 +1,5 @@
 import bcrypt from "bcryptjs";
 import { prisma } from "../lib/prisma";
-import { sendWelcomeEmail } from "../emails/emailHandlers";
-import { env } from "../lib/env";
 import type { SignUpData } from "../types/auth.types";
 
 export const registerUser = async ({
@@ -26,12 +24,6 @@ export const registerUser = async ({
       password: hashedPassword,
     },
     omit: { password: true },
-  });
-
-  await sendWelcomeEmail({
-    email: user.email,
-    name: user.fullName,
-    clientURL: env.CLIENT_URL,
   });
 
   return user;

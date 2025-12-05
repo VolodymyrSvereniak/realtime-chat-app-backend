@@ -18,17 +18,6 @@ const envSchema = z.object({
   JWT_SECRET: z.string().min(1, {
     error: "JWT_SECRET is required and must be a string",
   }),
-  RESEND_API_KEY: z.string().min(1, {
-    error: "RESEND_API_KEY is required",
-  }),
-
-  EMAIL_FROM: z.email({
-    error: "EMAIL_FROM must be a valid email address",
-  }),
-
-  EMAIL_FROM_NAME: z.string().min(1, {
-    error: "EMAIL_FROM_NAME is required",
-  }),
 });
 
 export type Env = z.infer<typeof envSchema>;
