@@ -34,8 +34,3 @@ export const logout = async (_req: Request, res: Response): Promise<void> => {
   setCookie(res, "authToken", "", { maxAge: 0 });
   res.status(200).json({ message: "Logged out successfully" });
 };
-
-export const updateProfile = async (
-  req: Request,
-  res: Response
-): Promise<void> => {};

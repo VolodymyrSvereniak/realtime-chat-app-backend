@@ -18,6 +18,15 @@ const envSchema = z.object({
   JWT_SECRET: z.string().min(1, {
     error: "JWT_SECRET is required and must be a string",
   }),
+  CLOUDINARY_CLOUD_NAME: z.string().min(1, {
+    error: "CLOUDINARY_CLOUD_NAME is required and must be a string",
+  }),
+  CLOUDINARY_API_KEY: z.string().min(1, {
+    error: "CLOUDINARY_API_KEY is required and must be a string",
+  }),
+  CLOUDINARY_API_SECRET: z.string().min(1, {
+    error: "CLOUDINARY_API_SECRET is required and must be a string",
+  }),
 });
 
 export type Env = z.infer<typeof envSchema>;
