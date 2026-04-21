@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express, { Request, Response, NextFunction } from "express";
+import rateLimit from 'express-rate-limit';
 import pinoHttp from "pino-http";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.route";
@@ -10,7 +11,15 @@ import { logger } from "./utils/logger";
 const app = express();
 const PORT = env.PORT;
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Too many requests, please try again later.',
+});
+app.use(limiter);
+
 app.use(express.json());
+// app.use(express.json({ limit: "5mb" }));
 
 app.use(cookieParser());
 
