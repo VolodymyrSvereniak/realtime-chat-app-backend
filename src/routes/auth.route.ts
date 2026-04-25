@@ -7,12 +7,13 @@ import { protectedRoute } from "../middlewares/auth";
 
 const router = express.Router();
 
+router.get("/me", protectedRoute, (req, res) => {
+  res.status(200).json(req.user);
+});
+
 router.post("/signup", validate(signUpSchema, "body"), asyncHandler(signUp));
 router.post("/login", validate(signUpSchema, "body"), asyncHandler(login));
 router.post("/logout", asyncHandler(logout));
 
-router.get("/me", protectedRoute, (req, res) => {
-  res.status(200).json(req.user);
-});
 
 export default router;
